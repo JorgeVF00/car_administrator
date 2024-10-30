@@ -1,0 +1,51 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="bg-white rounded-lg shadow p-6">
+    <%= render @car %>
+
+    <div class="mt-6 flex gap-2">
+      <%= link_to "Edit car", edit_car_path(@car), class: "rounded-lg py-2 px-4 bg-gray-100 inline-block font-medium hover:bg-gray-200" %>
+      <%= link_to "Back to cars", cars_path, class: "rounded-lg py-2 px-4 bg-gray-100 inline-block font-medium hover:bg-gray-200" %>
+      <%= button_to "Delete car", @car, method: :delete, class: "rounded-lg py-2 px-4 bg-red-600 text-white inline-block font-medium hover:bg-red-700", form: { data: { turbo_confirm: "Are you sure?" } } %>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold">Maintenance Services</h2>
+      <%= link_to "New maintenance service", new_maintenance_service_path(car_id: @car.id), class: "rounded-lg py-2 px-4 bg-blue-600 text-white inline-block font-medium hover:bg-blue-700" %>
+    </div>
+
+    <% if @maintenance_services.any? %>
+      <div class="grid gap-4">
+        <% @maintenance_services.each do |service| %>
+          <div class="bg-white rounded-lg shadow p-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="font-medium"><%= service.description %></p>
+                <p class="text-sm text-gray-600">Status: <span class="<%= service_status_color(service.status) %>"><%= service.status.titleize %></span></p>
+                <p class="text-sm text-gray-600">Date: <%= service.date %></p>
+              </div>
+              <div class="flex gap-2">
+                <%= link_to "View", maintenance_service_path(service), class: "text-blue-600 hover:text-blue-800" %>
+                <%= link_to "Edit", edit_maintenance_service_path(service), class: "text-blue-600 hover:text-blue-800" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="bg-gray-50 rounded-lg p-8 text-center">
+        <p class="text-gray-600 mb-4">No maintenance services found for this car.</p>
+        <p class="text-sm text-gray-500">Click the "New maintenance service" button above to add one.</p>
+      </div>
+    <% end %>
+
+    <div class="mt-4 flex justify-center">
+      <%= paginate @maintenance_services, class: "pagination" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="bg-white rounded-lg shadow-lg p-6">
+    <div class="mb-6">
+      <h1 class="text-2xl font-bold mb-4">Maintenance Service Details</h1>
+      
+      <div class="grid grid-cols-1 gap-4">
+        <div>
+          <h3 class="text-sm font-medium text-gray-500">Car</h3>
+          <p class="mt-1">
+            <%= link_to @maintenance_service.car.plate_number, car_path(@maintenance_service.car), class: "text-blue-600 hover:text-blue-900" %>
+            (<%= @maintenance_service.car.model %>, <%= @maintenance_service.car.year %>)
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-medium text-gray-500">Description</h3>
+          <p class="mt-1"><%= @maintenance_service.description %></p>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-medium text-gray-500">Status</h3>
+          <p class="mt-1">
+            <span class="<%= service_status_color(@maintenance_service.status) %>">
+              <%= @maintenance_service.status.titleize %>
+            </span>
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-sm font-medium text-gray-500">Date</h3>
+          <p class="mt-1"><%= @maintenance_service.date %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex gap-2 mt-6">
+      <%= link_to "Edit", edit_maintenance_service_path(@maintenance_service), class: "rounded-lg py-2 px-4 bg-gray-100 inline-block font-medium hover:bg-gray-200" %>
+      <%= link_to "Back", maintenance_services_path, class: "rounded-lg py-2 px-4 bg-gray-100 inline-block font-medium hover:bg-gray-200" %>
+      <%= button_to "Delete", @maintenance_service, method: :delete, class: "rounded-lg py-2 px-4 bg-red-600 text-white inline-block font-medium hover:bg-red-700", form: { data: { turbo_confirm: "Are you sure?" } } %>
+    </div>
+  </div>
+</div>
