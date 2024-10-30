@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::CarsController, type: :controller do
   let(:car) { create(:car) }
-  
+
   describe 'GET #index' do
     before { get :index, format: :json }
 
@@ -81,9 +81,9 @@ RSpec.describe Api::V1::CarsController, type: :controller do
       expect {
         delete :destroy, params: { id: -1 }, format: :json
       }.to_not change(Car, :count)
-  
+
       expect(response).to have_http_status(:not_found)
       expect(JSON.parse(response.body)).to include("error" => "Couldn't find Car with 'id'=-1")
-    end 
+    end
   end
 end

@@ -8,7 +8,7 @@ module CarsControllerConcern
   def index
     @cars = Car.page(params[:page]).per(10)
   end
-  
+
   def show; end
 
   def create

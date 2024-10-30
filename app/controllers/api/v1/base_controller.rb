@@ -6,7 +6,7 @@ module Api
       rescue_from ActiveRecord::RecordNotFound, with: :not_found
       rescue_from ActionController::ParameterMissing, with: :parameter_missing
       rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
-      
+
 
       private
 

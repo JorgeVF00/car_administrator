@@ -58,12 +58,12 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem 'kaminari'
+gem "kaminari"
 
 gem "active_model_serializers", "~> 0.10.14"
 
-gem 'rspec-rails'
-gem 'factory_bot_rails'
-gem 'faker'
-gem 'shoulda-matchers'
-gem 'rails-controller-testing'
+gem "rspec-rails"
+gem "factory_bot_rails"
+gem "faker"
+gem "shoulda-matchers"
+gem "rails-controller-testing"

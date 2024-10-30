@@ -81,9 +81,9 @@ RSpec.describe Api::V1::MaintenanceServicesController, type: :controller do
       expect {
         delete :destroy, params: { id: -1 }, format: :json
       }.to_not change(MaintenanceService, :count)
-  
+
       expect(response).to have_http_status(:not_found)
       expect(JSON.parse(response.body)).to include("error" => "Couldn't find MaintenanceService with 'id'=-1")
-    end  
+    end
   end
 end

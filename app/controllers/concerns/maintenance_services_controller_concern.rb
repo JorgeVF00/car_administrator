@@ -38,27 +38,26 @@ module MaintenanceServicesControllerConcern
       @maintenance_service = MaintenanceService.find(params[:id])
     end
 
-  
     def maintenance_service_params
       params.require(:maintenance_service).permit(:car_id, :description, :status, :date)
     end
 
     def filtering_params
-      params.permit(:status,:plate)
+      params.permit(:status, :plate)
     end
 
     def respond_to_create
       raise NotImplementedError
     end
-  
+
     def respond_to_update
       raise NotImplementedError
     end
-  
+
     def respond_to_update_error
       raise NotImplementedError
     end
-  
+
     def respond_to_destroy
       raise NotImplementedError
     end

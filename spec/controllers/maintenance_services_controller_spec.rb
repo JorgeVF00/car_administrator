@@ -18,7 +18,7 @@ RSpec.describe MaintenanceServicesController, type: :controller do
       end
 
       it 'returns all maintenance services' do
-        expect(assigns(:maintenance_services)).to match_array([pending_service, completed_service])
+        expect(assigns(:maintenance_services)).to match_array([ pending_service, completed_service ])
       end
     end
 

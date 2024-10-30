@@ -7,7 +7,7 @@ class MaintenanceService < ApplicationRecord
   validate :date_not_in_future
   validates :status, presence: true
 
-  enum :status, {:pending=>0, :in_progress=>1, :completed=>2}
+  enum :status, { :pending=>0, :in_progress=>1, :completed=>2 }
 
   scope :filter_by_status, ->(status) { where(status: status) if status.present? }
   scope :filter_by_plate, ->(plate) { 
@@ -21,10 +21,10 @@ class MaintenanceService < ApplicationRecord
   end
 
   private
-  
+
   def date_not_in_future
     if date.present? && date > Date.current
-      errors.add(:date, "must be a past or present date")
+      errors.add(:date, 'must be a past or present date')
     end
   end
 end
