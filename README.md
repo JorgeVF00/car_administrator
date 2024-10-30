@@ -97,7 +97,7 @@ MaintenanceServices también tiene formato de paginación (por 5), por lo que si
 ```bash
 curl -X GET "http://localhost:3000/api/v1/maintenance_services?page=2"
 ```
-6. ***Crear un servicio de mantenimiento:*
+6. ***Crear un servicio de mantenimiento:**
 ```bash
 curl -X POST \
   -H "Content-Type: application/json" \
